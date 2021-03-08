@@ -1,4 +1,4 @@
-import { Card, CardActions, Container, Grid, CardMedia, Typography, TableContainer, Paper, TableHead, TableCell, TableRow, TableBody, Table, Button } from '@material-ui/core'
+import { Grid, Typography, TableContainer, Paper, TableHead, TableCell, TableRow, TableBody, Table, Button } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
 import { MyContext } from '../context/MyContext'
 import { db } from '../database/firebase'
@@ -24,46 +24,46 @@ const MyProjects = () => {
                     return {id: doc.id, img: doc.data().img, link: doc.data().link, name: doc.data().name, description: doc.data().description}
                 }))
               })
-            // db.collection("projects").onSnapshot((snap) => {
-            //     setGetProjects(snap.docs.map((doc) => {      
-            //     }))
-            // })
         }
         getDataProjects()
     }, [info])
 
-    // var project = db.collection('hola').doc('my-projects').collection('william junior')
-    // console.log(project)
     return (
         <>
-            <Grid>
+        <Grid>
+            {
+                getProjects.length > 0 ?
                 <TableContainer component={Paper}>
-                    <Table className={classes.table} aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell align="center">Img</TableCell>
-                                <TableCell align="center">Name</TableCell>
-                                <TableCell align="center">Description</TableCell>
-                                <TableCell align="center">Link</TableCell>
-                                <TableCell align="center">Action</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                        {getProjects.map((row) => (
-                            <TableRow key={row.id}>
-                            <TableCell component="th" scope="row" align="center">
-                                <img className={classes.media} src={row.img} alt={row.name}/>
-                            </TableCell>
-                            <TableCell align="center">{row.name}</TableCell>
-                            <TableCell align="center">{row.description}</TableCell>
-                            <TableCell align="center"><a href={row.link} target="_blanck">View</a> </TableCell>
-                            <TableCell align="center"><Button>Delete</Button> </TableCell>
-                            </TableRow>
-                        ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            </Grid>
+                <Table className={classes.table} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell align="center">Img</TableCell>
+                            <TableCell align="center">Name</TableCell>
+                            <TableCell align="center">Description</TableCell>
+                            <TableCell align="center">Link</TableCell>
+                            <TableCell align="center">Action</TableCell>
+                        </TableRow>
+                    </TableHead>
+                     <TableBody>
+                    {getProjects.map((row) => (
+                        <TableRow key={row.id}>
+                        <TableCell component="th" scope="row" align="center">
+                            <img className={classes.media} src={row.img} alt={row.name}/>
+                        </TableCell>
+                        <TableCell align="center">{row.name}</TableCell>
+                        <TableCell align="center">{row.description}</TableCell>
+                        <TableCell align="center"><a href={row.link} target="_blanck">View</a> </TableCell>
+                        <TableCell align="center"><Button>Delete</Button> </TableCell>
+                        </TableRow>
+                    ))}
+                    </TableBody>
+                    
+                </Table>
+            </TableContainer>
+            :
+            <Typography variant="h5" color="initial" align="center">No tienes Proyectos, Puedes agregarlos dando clik en el boton!</Typography>
+            }
+        </Grid>
         </>
     )
 }

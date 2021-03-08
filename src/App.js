@@ -33,7 +33,7 @@ const App = () => {
         setInfo({id: users.uid, name: users.displayName, email: users.email})
       } 
     })
-  }, [])
+  }, [setInfo])
 
   // envia a la collecion user como id de la info y con los datos del estado info
   useEffect(() => {
