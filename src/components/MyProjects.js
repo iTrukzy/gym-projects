@@ -2,6 +2,7 @@ import { Grid, Typography, TableContainer, Paper, TableHead, TableCell, TableRow
 import React, { useContext, useEffect, useState } from 'react'
 import { MyContext } from '../context/MyContext'
 import { db } from '../database/firebase'
+import CreateProjects from './CreateProjects'
 import {styles} from './Styles'
 
 
@@ -64,6 +65,7 @@ const MyProjects = () => {
             <Typography variant="h5" color="initial" align="center">No tienes Proyectos, Puedes agregarlos dando clik en el boton!</Typography>
             }
         </Grid>
+        <CreateProjects />
         </>
     )
 }
