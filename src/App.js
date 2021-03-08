@@ -49,7 +49,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path="/" render={() => <Login /> }/>
-        <Route exact path="/home" render={() => <Home /> }/>
+        <Route exact path="/home" render={() => <Home firedata={fireData}/> }/>
         <Route exact path="/register" render={() => <Register /> }/>
         <Route exact path="/home/settings" render={() => <Settings />}/>
       </Switch>
